@@ -1,0 +1,181 @@
+2026-05-18 14:27:09,793 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 14:27:14,089 [INFO] Tentando conectar na porta 9222...
+2026-05-18 14:27:14,094 [INFO] ====== WebDriver manager ======
+2026-05-18 14:27:15,592 [INFO] Get LATEST chromedriver version for google-chrome
+2026-05-18 14:27:16,069 [INFO] There is no [win64] chromedriver "148.0.7778.167" for browser google-chrome "148.0.7778" in cache
+2026-05-18 14:27:16,760 [INFO] There is no [win64] chromedriver "148.0.7778.167" for browser google-chrome "148.0.7778" in cache
+2026-05-18 14:27:16,761 [INFO] Get LATEST chromedriver version for google-chrome
+2026-05-18 14:27:17,589 [INFO] WebDriver version 148.0.7778.167 selected
+2026-05-18 14:27:17,596 [INFO] Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.167/win64/chromedriver-win64.zip
+2026-05-18 14:27:17,596 [INFO] About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.167/win64/chromedriver-win64.zip
+2026-05-18 14:27:18,092 [INFO] Driver downloading response is 200
+2026-05-18 14:27:18,826 [INFO] Driver has been saved in cache [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167]
+2026-05-18 14:27:19,966 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Portal de Serviços SENATRAN
+2026-05-18 14:27:19,976 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-18 14:27:27,036 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-18 14:27:37,462 [WARNING] ⚠️  Tabela não encontrada na página atual.
+2026-05-18 14:27:37,479 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 14:27:45,165 [INFO] ⏹ Coleta pausada pelo usuário.
+2026-05-18 14:29:17,513 [INFO] Tentando conectar na porta 9222...
+2026-05-18 14:29:17,515 [INFO] ====== WebDriver manager ======
+2026-05-18 14:29:18,352 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-18 14:29:18,957 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Portal de Serviços SENATRAN
+2026-05-18 14:29:18,959 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-18 14:29:22,849 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-18 14:29:33,290 [WARNING] ⚠️  Tabela não encontrada na página atual.
+2026-05-18 14:29:33,293 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 14:33:18,604 [INFO] ⏹ Coleta pausada pelo usuário.
+2026-05-18 14:33:21,072 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-18 14:33:31,393 [WARNING] ⚠️  Tabela não encontrada na página atual.
+2026-05-18 14:33:31,395 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 14:35:04,933 [INFO] ⏹ Coleta pausada pelo usuário.
+2026-05-18 14:42:52,506 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 14:42:59,853 [INFO] Tentando conectar na porta 9222...
+2026-05-18 14:42:59,854 [INFO] ====== WebDriver manager ======
+2026-05-18 14:43:00,834 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-18 14:43:47,888 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Nova guia
+2026-05-18 14:43:47,908 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-18 14:44:39,827 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 14:45:57,964 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 14:46:05,776 [INFO] Tentando conectar na porta 9222...
+2026-05-18 14:46:05,778 [INFO] ====== WebDriver manager ======
+2026-05-18 14:46:06,849 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-18 14:46:07,523 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Portal de Serviços SENATRAN
+2026-05-18 14:46:07,532 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-18 14:46:11,608 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-18 14:46:21,984 [WARNING] ⚠️  Tabela não encontrada na página atual.
+2026-05-18 14:46:22,002 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 14:51:32,400 [WARNING] ⚠️  Tabela não encontrada na página atual.
+2026-05-18 14:51:32,403 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 14:58:32,683 [ERROR] ❌ Erro Selenium: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff73a6e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff73a40e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff73a15d57d]
+	chromedriver!(No symbol) [0x7ff73a148a62]
+	chromedriver!(No symbol) [0x7ff73a16ede1]
+	chromedriver!(No symbol) [0x7ff73a1e7580]
+	chromedriver!(No symbol) [0x7ff73a204532]
+	chromedriver!(No symbol) [0x7ff73a1a9d58]
+	chromedriver!(No symbol) [0x7ff73a1aac43]
+	chromedriver!GetHandleVerifier [0x7ff73a70dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff73a70802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff73a72c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff73a42b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff73a4342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff73a417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff73a4180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff73a3fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ff93984e957]
+	ntdll!RtlUserThreadStart [0x7ff93a44427c+2c]
+
+2026-05-18 14:58:32,683 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-18 14:58:32,688 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 14:59:04,735 [INFO] ⏹ Coleta pausada pelo usuário.
+2026-05-18 14:59:05,457 [INFO] ⚡ Coleta manual iniciada...
+2026-05-18 14:59:05,460 [ERROR] ❌ Erro Selenium: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff73a6e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff73a40e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff73a15d366]
+	chromedriver!(No symbol) [0x7ff73a1a8dd6]
+	chromedriver!(No symbol) [0x7ff73a1dfd72]
+	chromedriver!(No symbol) [0x7ff73a1d9baf]
+	chromedriver!(No symbol) [0x7ff73a1d9373]
+	chromedriver!(No symbol) [0x7ff73a126325]
+	chromedriver!GetHandleVerifier [0x7ff73a70dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff73a70802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff73a72c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff73a42b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff73a4342bc+3b1cc]
+	chromedriver!(No symbol) [0x7ff73a1250bc]
+	chromedriver!GetHandleVerifier [0x7ff73a85dc58+464b68]
+	KERNEL32!(No symbol) [0x7ff93984e957]
+	ntdll!RtlUserThreadStart [0x7ff93a44427c+2c]
+
+2026-05-18 14:59:05,460 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-18 14:59:05,466 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 15:09:04,087 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 15:09:08,591 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 15:09:10,952 [INFO] Tentando conectar na porta 9222...
+2026-05-18 15:09:10,954 [INFO] ====== WebDriver manager ======
+2026-05-18 15:09:11,697 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-18 15:09:12,328 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Portal de Serviços SENATRAN
+2026-05-18 15:09:12,334 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-18 15:09:14,782 [INFO] ⚡ Coleta manual iniciada...
+2026-05-18 15:09:14,803 [ERROR] ❌ Erro Selenium: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff73a6e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff73a40e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff73a15d57d]
+	chromedriver!(No symbol) [0x7ff73a1654f1]
+	chromedriver!(No symbol) [0x7ff73a1685b5]
+	chromedriver!(No symbol) [0x7ff73a16867f]
+	chromedriver!(No symbol) [0x7ff73a1b6dfe]
+	chromedriver!(No symbol) [0x7ff73a1b798c]
+	chromedriver!(No symbol) [0x7ff73a2080c7]
+	chromedriver!(No symbol) [0x7ff73a204c63]
+	chromedriver!(No symbol) [0x7ff73a1a9d58]
+	chromedriver!(No symbol) [0x7ff73a1aac43]
+	chromedriver!GetHandleVerifier [0x7ff73a70dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff73a70802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff73a72c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff73a42b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff73a4342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff73a417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff73a4180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff73a3fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ff93984e957]
+	ntdll!RtlUserThreadStart [0x7ff93a44427c+2c]
+
+2026-05-18 15:09:14,803 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-18 15:09:14,816 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 15:09:18,184 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-18 15:09:18,195 [ERROR] ❌ Erro Selenium: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff73a6e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff73a40e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff73a15d57d]
+	chromedriver!(No symbol) [0x7ff73a1654f1]
+	chromedriver!(No symbol) [0x7ff73a1685b5]
+	chromedriver!(No symbol) [0x7ff73a16867f]
+	chromedriver!(No symbol) [0x7ff73a1b6dfe]
+	chromedriver!(No symbol) [0x7ff73a1b798c]
+	chromedriver!(No symbol) [0x7ff73a2080c7]
+	chromedriver!(No symbol) [0x7ff73a204c63]
+	chromedriver!(No symbol) [0x7ff73a1a9d58]
+	chromedriver!(No symbol) [0x7ff73a1aac43]
+	chromedriver!GetHandleVerifier [0x7ff73a70dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff73a70802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff73a72c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff73a42b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff73a4342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff73a417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff73a4180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff73a3fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ff93984e957]
+	ntdll!RtlUserThreadStart [0x7ff93a44427c+2c]
+
+2026-05-18 15:09:18,196 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-18 15:09:18,198 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-18 15:09:34,106 [INFO] ⏹ Coleta pausada pelo usuário.
+2026-05-18 15:10:09,160 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 15:56:52,705 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 15:57:18,910 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 16:41:55,911 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:42:18,127 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 16:42:21,298 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:43:59,787 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 16:44:02,448 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:44:26,290 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 16:44:28,959 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:44:32,261 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 16:44:38,593 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:44:44,665 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 16:44:50,710 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:58:13,207 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 16:58:15,198 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
