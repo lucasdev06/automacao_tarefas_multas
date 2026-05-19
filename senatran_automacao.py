@@ -68,31 +68,31 @@ INTERVALO_SEG   = 300          # 5 minutos
 SELETORES = {
     "tabela_mensagens":  "//div[@_ngcontent-whm-c156=''][@class='card-body']",
     # Container principal da caixa de mensagens
-    
+ 
     "linhas_tabela":     "//div[@class='autuacao border ng-star-inserted']",
     # Cada mensagem é um div.autuacao
-    
+ 
     "celulas":           "//div[@class='autuacao border ng-star-inserted']//div[contains(@class, 'col-')]",
     # Colunas dentro de cada mensagem (título, data, conteúdo)
-    
+ 
     "titulo_mensagem":   "//div[@class='autuacao border ng-star-inserted']//span[@class='title']",
     # Título/tipo da mensagem
-    
+ 
     "data_mensagem":     "//div[@class='autuacao border ng-star-inserted']//div[@_ngcontent-whm-c156=''][contains(@class, 'col-md-4')]",
     # Data e hora da mensagem
-    
+ 
     "conteudo_mensagem": "//div[@class='autuacao border ng-star-inserted']//p[@_ngcontent-whm-c156='']",
     # Conteúdo/descrição da mensagem
-    
+ 
     "total_registros":   "//div[@_ngcontent-whm-c139=''][contains(text(), 'de')]",
     # Elemento com total "1-100 de 636 itens"
-    
+ 
     "proxima_pagina":    "//button[@id='btn-next-page']",
     # Botão próxima página
-    
+ 
     "pagina_anterior":   "//button[@id='btn-last-page']",
     # Botão página anterior
-    
+ 
     "seletor_itens":     "//ng-select[contains(@class, 'ng-select')]",
     # Seletor de quantidade de itens por página
 }
@@ -320,7 +320,7 @@ class App(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Senatran-GO")
+        self.title("Maas Serviços Ltda.")
         self.geometry("1060x700")
         self.minsize(900, 600)
         self.configure(bg=self.COR_BG)

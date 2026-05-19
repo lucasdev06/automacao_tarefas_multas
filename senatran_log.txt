@@ -179,3 +179,204 @@ Stacktrace:
 2026-05-18 16:44:50,710 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
 2026-05-18 16:58:13,207 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
 2026-05-18 16:58:15,198 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 17:10:18,453 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 17:10:42,588 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 17:10:48,068 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-18 17:11:45,830 [INFO] 🔌 Driver desconectado (Chrome continua aberto).
+2026-05-18 17:11:48,175 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-19 09:09:36,603 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-19 09:09:43,067 [INFO] Tentando conectar na porta 9222...
+2026-05-19 09:09:43,070 [INFO] ====== WebDriver manager ======
+2026-05-19 09:09:44,612 [INFO] Get LATEST chromedriver version for google-chrome
+2026-05-19 09:09:45,835 [INFO] Get LATEST chromedriver version for google-chrome
+2026-05-19 09:09:46,781 [INFO] WebDriver version 148.0.7778.167 selected
+2026-05-19 09:09:46,787 [INFO] Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.167/win64/chromedriver-win64.zip
+2026-05-19 09:09:46,787 [INFO] About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.167/win64/chromedriver-win64.zip
+2026-05-19 09:09:47,274 [INFO] Driver downloading response is 200
+2026-05-19 09:09:47,830 [INFO] Driver has been saved in cache [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167]
+2026-05-19 09:09:48,970 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Portal de Serviços SENATRAN
+2026-05-19 09:09:48,980 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-19 09:09:51,294 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-19 09:09:51,327 [ERROR] ❌ Erro Selenium: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6056e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff60540e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff60515d57d]
+	chromedriver!(No symbol) [0x7ff6051654f1]
+	chromedriver!(No symbol) [0x7ff6051685b5]
+	chromedriver!(No symbol) [0x7ff60516867f]
+	chromedriver!(No symbol) [0x7ff6051b6dfe]
+	chromedriver!(No symbol) [0x7ff6051b798c]
+	chromedriver!(No symbol) [0x7ff6052080c7]
+	chromedriver!(No symbol) [0x7ff605204c63]
+	chromedriver!(No symbol) [0x7ff6051a9d58]
+	chromedriver!(No symbol) [0x7ff6051aac43]
+	chromedriver!GetHandleVerifier [0x7ff60570dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff60570802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff60572c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff60542b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff6054342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff605417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff6054180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff6053fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ffd44a2e957]
+	ntdll!RtlUserThreadStart [0x7ffd462a427c+2c]
+
+2026-05-19 09:09:51,328 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-19 09:09:51,343 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-19 09:14:51,672 [ERROR] ❌ Erro Selenium: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6056e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff60540e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff60515d57d]
+	chromedriver!(No symbol) [0x7ff6051654f1]
+	chromedriver!(No symbol) [0x7ff6051685b5]
+	chromedriver!(No symbol) [0x7ff60516867f]
+	chromedriver!(No symbol) [0x7ff6051b6dfe]
+	chromedriver!(No symbol) [0x7ff6051b798c]
+	chromedriver!(No symbol) [0x7ff6052080c7]
+	chromedriver!(No symbol) [0x7ff605204c63]
+	chromedriver!(No symbol) [0x7ff6051a9d58]
+	chromedriver!(No symbol) [0x7ff6051aac43]
+	chromedriver!GetHandleVerifier [0x7ff60570dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff60570802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff60572c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff60542b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff6054342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff605417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff6054180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff6053fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ffd44a2e957]
+	
+2026-05-19 09:14:51,673 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-19 09:14:51,675 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-19 09:19:52,091 [ERROR] ❌ Erro Selenium: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6056e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff60540e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff60515d57d]
+	chromedriver!(No symbol) [0x7ff6051654f1]
+	chromedriver!(No symbol) [0x7ff6051685b5]
+	chromedriver!(No symbol) [0x7ff60516867f]
+	chromedriver!(No symbol) [0x7ff6051b6dfe]
+	chromedriver!(No symbol) [0x7ff6051b798c]
+	chromedriver!(No symbol) [0x7ff6052080c7]
+	chromedriver!(No symbol) [0x7ff605204c63]
+	chromedriver!(No symbol) [0x7ff6051a9d58]
+	chromedriver!(No symbol) [0x7ff6051aac43]
+	chromedriver!GetHandleVerifier [0x7ff60570dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff60570802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff60572c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff60542b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff6054342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff605417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff6054180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff6053fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ffd44a2e957]
+	ntdll!RtlUserThreadStart [0x7ffd462a427c+2c]
+
+2026-05-19 09:19:52,091 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-19 09:19:52,094 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-19 09:20:29,850 [INFO] ⏹ Coleta pausada pelo usuário.
+2026-05-19 09:20:30,381 [INFO] Tentando conectar na porta 9222...
+2026-05-19 09:20:30,384 [INFO] ====== WebDriver manager ======
+2026-05-19 09:20:31,068 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-19 09:20:31,589 [INFO] Tentando conectar na porta 9222...
+2026-05-19 09:20:31,590 [INFO] ====== WebDriver manager ======
+2026-05-19 09:20:32,288 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-19 09:21:34,890 [ERROR] ❌ Falha ao conectar: Message: session not created: cannot connect to chrome at 127.0.0.1:9222
+from chrome not reachable; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6056e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff60540e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff60515d366]
+	chromedriver!(No symbol) [0x7ff60514db6a]
+	chromedriver!(No symbol) [0x7ff6051a51db]
+	chromedriver!(No symbol) [0x7ff6051999be]
+	chromedriver!(No symbol) [0x7ff6051ee0f1]
+	chromedriver!(No symbol) [0x7ff6051ed956]
+	chromedriver!(No symbol) [0x7ff6051a9d58]
+	chromedriver!(No symbol) [0x7ff6051aac43]
+	chromedriver!GetHandleVerifier [0x7ff60570dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff60570802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff60572c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff60542b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff6054342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff605417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff6054180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff6053fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ffd44a2e957]
+	ntdll!RtlUserThreadStart [0x7ffd462a427c+2c]
+
+2026-05-19 09:21:34,894 [INFO] ❌ Não foi possível conectar. Verifique se o Chrome está aberto com:
+    --remote-debugging-port=9222
+    Exemplo: chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeDebug
+2026-05-19 09:21:36,083 [ERROR] ❌ Falha ao conectar: Message: session not created: cannot connect to chrome at 127.0.0.1:9222
+from chrome not reachable; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6056e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff60540e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff60515d366]
+	chromedriver!(No symbol) [0x7ff60514db6a]
+	chromedriver!(No symbol) [0x7ff6051a51db]
+	chromedriver!(No symbol) [0x7ff6051999be]
+	chromedriver!(No symbol) [0x7ff6051ee0f1]
+	chromedriver!(No symbol) [0x7ff6051ed956]
+	chromedriver!(No symbol) [0x7ff6051a9d58]
+	chromedriver!(No symbol) [0x7ff6051aac43]
+	chromedriver!GetHandleVerifier [0x7ff60570dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff60570802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff60572c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff60542b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff6054342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff605417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff6054180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff6053fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ffd44a2e957]
+	ntdll!RtlUserThreadStart [0x7ffd462a427c+2c]
+
+2026-05-19 09:21:36,087 [INFO] ❌ Não foi possível conectar. Verifique se o Chrome está aberto com:
+    --remote-debugging-port=9222
+    Exemplo: chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeDebug
+2026-05-19 09:30:52,183 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-19 09:30:58,375 [INFO] Tentando conectar na porta 9222...
+2026-05-19 09:30:58,376 [INFO] ====== WebDriver manager ======
+2026-05-19 09:30:59,077 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-19 09:30:59,674 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: Portal de Serviços SENATRAN
+2026-05-19 09:30:59,680 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-19 09:31:00,990 [INFO] ▶ Coleta automática iniciada (horário comercial).
+2026-05-19 09:31:01,018 [ERROR] ❌ Erro Selenium: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=148.0.7778.168); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6056e1e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff60540e6c0+155d0]
+	chromedriver!(No symbol) [0x7ff60515d57d]
+	chromedriver!(No symbol) [0x7ff6051654f1]
+	chromedriver!(No symbol) [0x7ff6051685b5]
+	chromedriver!(No symbol) [0x7ff60516867f]
+	chromedriver!(No symbol) [0x7ff6051b6dfe]
+	chromedriver!(No symbol) [0x7ff6051b798c]
+	chromedriver!(No symbol) [0x7ff6052080c7]
+	chromedriver!(No symbol) [0x7ff605204c63]
+	chromedriver!(No symbol) [0x7ff6051a9d58]
+	chromedriver!(No symbol) [0x7ff6051aac43]
+	chromedriver!GetHandleVerifier [0x7ff60570dab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff60570802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff60572c872+333782]
+	chromedriver!GetHandleVerifier [0x7ff60542b785+32695]
+	chromedriver!GetHandleVerifier [0x7ff6054342bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff605417f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff6054180b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff6053fbf27+2e37]
+	KERNEL32!(No symbol) [0x7ffd44a2e957]
+	ntdll!RtlUserThreadStart [0x7ffd462a427c+2c]
+
+2026-05-19 09:31:01,019 [INFO] ✅ 0 infração(ões) nova(s) coletada(s).
+2026-05-19 09:31:01,031 [INFO] 🔍 Nenhuma infração nova encontrada.
+2026-05-19 10:43:22,011 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-19 10:43:35,151 [INFO] Tentando conectar na porta 9222...
+2026-05-19 10:43:35,153 [INFO] ====== WebDriver manager ======
+2026-05-19 10:43:35,916 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
