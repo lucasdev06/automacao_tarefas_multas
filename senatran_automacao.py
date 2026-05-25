@@ -6,6 +6,7 @@ import json
 import os
 import sys
 import logging
+import re
 from datetime import datetime, date
 from collections import defaultdict
 import subprocess
@@ -64,37 +65,16 @@ HORARIO_INICIO  = "08:00"
 HORARIO_FIM     = "18:00"
 INTERVALO_SEG   = 300          # 5 minutos
 
-# Seletores CSS/XPath — ajuste conforme o site real do Senatran
+# Seletores CSS/XPath — ajustados conforme o HTML real do Senatran (Angular)
 SELETORES = {
-    "tabela_mensagens":  "//div[@_ngcontent-whm-c156=''][@class='card-body']",
-    # Container principal da caixa de mensagens
- 
-    "linhas_tabela":     "//div[@class='autuacao border ng-star-inserted']",
-    # Cada mensagem é um div.autuacao
- 
-    "celulas":           "//div[@class='autuacao border ng-star-inserted']//div[contains(@class, 'col-')]",
-    # Colunas dentro de cada mensagem (título, data, conteúdo)
- 
-    "titulo_mensagem":   "//div[@class='autuacao border ng-star-inserted']//span[@class='title']",
-    # Título/tipo da mensagem
- 
-    "data_mensagem":     "//div[@class='autuacao border ng-star-inserted']//div[@_ngcontent-whm-c156=''][contains(@class, 'col-md-4')]",
-    # Data e hora da mensagem
- 
-    "conteudo_mensagem": "//div[@class='autuacao border ng-star-inserted']//p[@_ngcontent-whm-c156='']",
-    # Conteúdo/descrição da mensagem
- 
-    "total_registros":   "//div[@_ngcontent-whm-c139=''][contains(text(), 'de')]",
-    # Elemento com total "1-100 de 636 itens"
- 
-    "proxima_pagina":    "//button[@id='btn-next-page']",
-    # Botão próxima página
- 
-    "pagina_anterior":   "//button[@id='btn-last-page']",
-    # Botão página anterior
- 
-    "seletor_itens":     "//ng-select[contains(@class, 'ng-select')]",
-    # Seletor de quantidade de itens por página
+    "tabela_mensagens":  "div.autuacao",                    # cada card de notificação/autuação
+    "linhas_tabela":     "div.autuacao",                    # cada item é um div.autuacao (não tr)
+    "celulas":           "div.row",                         # linhas internas de cada card
+    "total_registros":   "br-pagination-table div",         # ex: "1-10 de 686 itens"
+    "proxima_pagina":    "button#btn-next-page",            # botão próxima página
+    "titulo_card":       "span.title",                      # tipo da mensagem
+    "corpo_card":        "p",                               # texto com placa e valor
+    "data_card":         "div.text-right div",              # data/hora da notificação
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -127,6 +107,11 @@ class SenatranColetor:
     # ── Conexão ───────────────────────────────────────────────────────────────
 
     def conectar(self) -> bool:
+        """
+        Conecta ao Chrome em modo depuração remota.
+        Para ativar o Chrome com debugging, use:
+            chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\\ChromeDebug
+        """
         try:
             opts = Options()
             opts.add_experimental_option("debuggerAddress", f"127.0.0.1:{self.porta_debug}")
@@ -161,10 +146,10 @@ class SenatranColetor:
 
     # ── Coleta ────────────────────────────────────────────────────────────────
 
-    def coletar_multas(self) -> list[dict]:
+    def coletar_multas(self) -> list:
         """
-        Raspa todas as linhas da tabela de multas na página atual.
-        Retorna lista de dicts com os dados de cada infração nova.
+        Raspa todos os cards de autuação/notificação na página atual.
+        Retorna lista de dicts com os dados de cada item novo.
         """
         if not self.conectado or not self.driver:
             logger.warning("⚠️  Não conectado. Abortando coleta.")
@@ -174,36 +159,65 @@ class SenatranColetor:
         try:
             wait = WebDriverWait(self.driver, 10)
 
-            # ── tenta localizar a tabela ──────────────────────────────────────
+            # ── tenta localizar os cards ──────────────────────────────────────
             try:
-                wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, SELETORES["tabela_mensagens"])))
+                wait.until(EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, SELETORES["tabela_mensagens"])
+                ))
             except TimeoutException:
-                logger.warning("⚠️  Tabela não encontrada na página atual.")
+                logger.warning("⚠️  Cards de autuação não encontrados na página atual.")
                 return []
 
             pagina = 1
             while True:
-                linhas = self.driver.find_elements(By.CSS_SELECTOR, SELETORES["linhas_tabela"])
-                logger.info(f"   Página {pagina}: {len(linhas)} linha(s) encontrada(s).")
+                cards = self.driver.find_elements(
+                    By.CSS_SELECTOR, SELETORES["linhas_tabela"]
+                )
+                logger.info(f"   Página {pagina}: {len(cards)} card(s) encontrado(s).")
 
-                for linha in linhas:
-                    celulas = linha.find_elements(By.CSS_SELECTOR, SELETORES["celulas"])
-                    if not celulas:
+                for card in cards:
+                    # ── Título/tipo da mensagem ───────────────────────────────
+                    try:
+                        titulo = card.find_element(
+                            By.CSS_SELECTOR, SELETORES["titulo_card"]
+                        ).text.strip()
+                    except NoSuchElementException:
+                        titulo = "—"
+
+                    # ── Data/hora da notificação ─────────────────────────────
+                    try:
+                        # O ícone fa-calendar fica junto com o texto de data;
+                        # pegamos o último div dentro de div.text-right
+                        data_hora = card.find_element(
+                            By.XPATH,
+                            ".//div[contains(@class,'text-right')]//div[last()]"
+                        ).text.strip()
+                        # Remove possível ícone Unicode residual
+                        data_hora = re.sub(r'[^\d/: ]', '', data_hora).strip()
+                    except NoSuchElementException:
+                        data_hora = "—"
+
+                    # ── Corpo do texto ────────────────────────────────────────
+                    try:
+                        corpo = card.find_element(
+                            By.CSS_SELECTOR, SELETORES["corpo_card"]
+                        ).text.strip()
+                    except NoSuchElementException:
+                        corpo = "—"
+
+                    id_multa = self._gerar_id([titulo, data_hora, corpo])
+                    if id_multa in self.multas_vistas:
                         continue
 
-                    textos = [c.text.strip() for c in celulas]
-                    id_multa = self._gerar_id(textos)
-
-                    if id_multa in self.multas_vistas:
-                        continue  # já processada
-
-                    multa = self._mapear_multa(textos, id_multa)
+                    multa = self._mapear_multa_card(titulo, data_hora, corpo, id_multa)
                     novas.append(multa)
                     self.multas_vistas.add(id_multa)
 
                 # ── paginação ─────────────────────────────────────────────────
                 try:
-                    btn_prox = self.driver.find_element(By.CSS_SELECTOR, SELETORES["proxima_pagina"])
+                    btn_prox = self.driver.find_element(
+                        By.CSS_SELECTOR, SELETORES["proxima_pagina"]
+                    )
                     if btn_prox.is_displayed() and btn_prox.is_enabled():
                         btn_prox.click()
                         time.sleep(1.5)
@@ -216,36 +230,69 @@ class SenatranColetor:
         except WebDriverException as e:
             logger.error(f"❌ Erro Selenium: {e}")
 
-        logger.info(f"✅ {len(novas)} infração(ões) nova(s) coletada(s).")
+        logger.info(f"✅ {len(novas)} item(ns) novo(s) coletado(s).")
         return novas
 
     # ── Helpers ───────────────────────────────────────────────────────────────
 
     @staticmethod
     def _gerar_id(textos: list) -> str:
-        return "|".join(textos[:4])   # usa as 4 primeiras colunas como chave
+        return "|".join(textos[:3])
 
     @staticmethod
-    def _mapear_multa(textos: list, id_multa: str) -> dict:
+    def _mapear_multa_card(titulo: str, data_hora: str, corpo: str, id_multa: str) -> dict:
         """
-        Mapeia colunas para campos nomeados.
-        AJUSTE os índices conforme as colunas reais do Senatran.
+        Extrai placa e valor do texto do corpo da mensagem quando disponíveis.
+
+        Exemplos de corpo:
+          'Você possui uma nova autuação para o veículo TGM4C07 no valor de R$ 130,16.'
+          'A infração T006672904 do veículo QTP7D62 teve um pagamento registrado...'
+          'Transferência de propriedade de veículo efetivada com sucesso.'
         """
-        def safe(lst, i, default="—"):
-            return lst[i] if i < len(lst) else default
+        placa       = "—"
+        valor       = "—"
+        num_infracao = "—"
+
+        # Extrai placa — padrão Mercosul (AAA0A00) ou antigo (AAA0000)
+        m_placa = re.search(r'\b([A-Z]{3}[\dA-Z]\w{3})\b', corpo)
+        if m_placa:
+            placa = m_placa.group(1)
+
+        # Extrai valor monetário: R$ 130,16
+        m_valor = re.search(r'R\$\s*([\d.,]+)', corpo)
+        if m_valor:
+            valor = f"R$ {m_valor.group(1)}"
+
+        # Extrai número de infração (ex: T006672904, NW00868123, R031408714)
+        m_inf = re.search(r'\b([A-Z]{1,2}\d{6,})\b', corpo)
+        if m_inf:
+            num_infracao = m_inf.group(1)
+
+        # Determina status com base no título
+        titulo_lower = titulo.lower()
+        if "autuação" in titulo_lower:
+            status = "Nova Autuação"
+        elif "alteração" in titulo_lower or "pagamento" in titulo_lower:
+            status = "Pagamento Registrado"
+        elif "transferência" in titulo_lower:
+            status = "Transferência"
+        else:
+            status = titulo[:30] if titulo != "—" else "—"
 
         return {
             "id":            id_multa,
             "coletado_em":   datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "data_infracao": safe(textos, 0),
-            "placa":         safe(textos, 1),
-            "veiculo":       safe(textos, 2),
-            "infrator":      safe(textos, 3),
-            "descricao":     safe(textos, 4),
-            "local":         safe(textos, 5),
-            "valor":         safe(textos, 6),
-            "status":        safe(textos, 7),
-            "raw":           textos,            # colunas brutas para diagnóstico
+            "data_infracao": data_hora,
+            "placa":         placa,
+            "veiculo":       "—",
+            "num_infracao":  num_infracao,
+            "infrator":      "—",
+            "descricao":     titulo,
+            "local":         "—",
+            "valor":         valor,
+            "status":        status,
+            "corpo":         corpo,
+            "raw":           [titulo, data_hora, corpo],
         }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -254,7 +301,7 @@ class SenatranColetor:
 
 class GerenciadorDados:
     def __init__(self):
-        self.multas: list[dict] = []
+        self.multas: list = []
         self._carregar()
 
     def _carregar(self):
@@ -270,7 +317,7 @@ class GerenciadorDados:
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(self.multas, f, ensure_ascii=False, indent=2)
 
-    def adicionar(self, novas: list[dict]):
+    def adicionar(self, novas: list):
         self.multas.extend(novas)
         self.salvar()
 
@@ -284,9 +331,9 @@ class GerenciadorDados:
                 por_hora[hora] += 1
 
         return {
-            "total_hoje":   len(hoje_lista),
-            "total_geral":  len(self.multas),
-            "por_hora":     dict(sorted(por_hora.items())),
+            "total_hoje":    len(hoje_lista),
+            "total_geral":   len(self.multas),
+            "por_hora":      dict(sorted(por_hora.items())),
             "ultima_coleta": self.multas[-1]["coletado_em"] if self.multas else "—",
         }
 
@@ -320,7 +367,7 @@ class App(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Maas Serviços Ltda.")
+        self.title("SENATRAN — Monitor de Infrações")
         self.geometry("1060x700")
         self.minsize(900, 600)
         self.configure(bg=self.COR_BG)
@@ -343,7 +390,7 @@ class App(tk.Tk):
         header.pack(fill="x", side="top")
 
         tk.Label(
-            header, text="⚡ Central de Monitoramento de Multas",
+            header, text="⚡ SENATRAN MONITOR",
             font=("Consolas", 16, "bold"),
             fg=self.COR_AZUL, bg=self.COR_PAINEL
         ).pack(side="left", padx=20)
@@ -401,9 +448,9 @@ class App(tk.Tk):
         self.var_geral = tk.StringVar(value="0")
         self.var_ult   = tk.StringVar(value="—")
 
-        self._card(pai, "INFRAÇÕES HOJE",    self.var_hoje,  self.COR_AMARELO)
-        self._card(pai, "TOTAL HISTÓRICO",   self.var_geral, self.COR_AZUL)
-        self._card(pai, "ÚLTIMA ATUALIZAÇÃO",self.var_ult,   self.COR_VERDE)
+        self._card(pai, "INFRAÇÕES HOJE",     self.var_hoje,  self.COR_AMARELO)
+        self._card(pai, "TOTAL HISTÓRICO",    self.var_geral, self.COR_AZUL)
+        self._card(pai, "ÚLTIMA ATUALIZAÇÃO", self.var_ult,   self.COR_VERDE)
 
     def _build_controles(self, pai):
         tk.Frame(pai, bg=self.COR_BORDA, height=1).pack(fill="x", pady=12)
@@ -481,8 +528,8 @@ class App(tk.Tk):
                                  font=self.FONTE_LABEL, fg=self.COR_MUTED, bg=self.COR_PAINEL)
         self.lbl_qtd.pack(side="right")
 
-        colunas = ("coletado_em", "data_infracao", "placa", "veiculo",
-                   "descricao", "local", "valor", "status")
+        colunas = ("coletado_em", "data_infracao", "placa", "num_infracao",
+                   "descricao", "valor", "status", "corpo")
         self.tree = ttk.Treeview(frame, columns=colunas, show="headings", height=10)
         style = ttk.Style()
         style.theme_use("default")
@@ -495,22 +542,35 @@ class App(tk.Tk):
                          font=self.FONTE_LABEL, borderwidth=0, relief="flat")
         style.map("Treeview", background=[("selected", self.COR_AZUL)])
 
-        widths = {"coletado_em": 130, "data_infracao": 100, "placa": 80,
-                  "veiculo": 90, "descricao": 160, "local": 120,
-                  "valor": 70, "status": 80}
-        titulos = {"coletado_em": "Coletado em", "data_infracao": "Data Infração",
-                   "placa": "Placa", "veiculo": "Veículo",
-                   "descricao": "Descrição", "local": "Local",
-                   "valor": "Valor", "status": "Status"}
+        widths = {
+            "coletado_em":   130,
+            "data_infracao": 120,
+            "placa":          80,
+            "num_infracao":  110,
+            "descricao":     200,
+            "valor":          80,
+            "status":        130,
+            "corpo":         260,
+        }
+        titulos = {
+            "coletado_em":   "Coletado em",
+            "data_infracao": "Data Notificação",
+            "placa":         "Placa",
+            "num_infracao":  "Nº Infração",
+            "descricao":     "Tipo",
+            "valor":         "Valor",
+            "status":        "Status",
+            "corpo":         "Mensagem",
+        }
         for col in colunas:
             self.tree.heading(col, text=titulos.get(col, col))
             self.tree.column(col, width=widths.get(col, 100), minwidth=60, anchor="w")
 
-        sb_v = ttk.Scrollbar(frame, orient="vertical", command=self.tree.yview)
+        sb_v = ttk.Scrollbar(frame, orient="vertical",   command=self.tree.yview)
         sb_h = ttk.Scrollbar(frame, orient="horizontal", command=self.tree.xview)
         self.tree.configure(yscrollcommand=sb_v.set, xscrollcommand=sb_h.set)
         self.tree.pack(side="left", fill="both", expand=True, padx=(10, 0))
-        sb_v.pack(side="right", fill="y")
+        sb_v.pack(side="right",  fill="y")
         sb_h.pack(side="bottom", fill="x", padx=10)
 
     def _build_log(self, pai):
@@ -585,10 +645,10 @@ class App(tk.Tk):
 
     def _loop_coleta(self):
         while self._rodando:
-            agora = datetime.now()
+            agora  = datetime.now()
             inicio = datetime.strptime(HORARIO_INICIO, "%H:%M").replace(
                 year=agora.year, month=agora.month, day=agora.day)
-            fim = datetime.strptime(HORARIO_FIM, "%H:%M").replace(
+            fim    = datetime.strptime(HORARIO_FIM, "%H:%M").replace(
                 year=agora.year, month=agora.month, day=agora.day)
 
             if inicio <= agora <= fim:
@@ -610,9 +670,9 @@ class App(tk.Tk):
         if novas:
             self.dados.adicionar(novas)
             self.after(0, self._atualizar_tabela, novas)
-            self.after(0, self._log, f"✅ {len(novas)} nova(s) infração(ões) adicionada(s).")
+            self.after(0, self._log, f"✅ {len(novas)} nova(s) notificação(ões) adicionada(s).")
         else:
-            self.after(0, self._log, "🔍 Nenhuma infração nova encontrada.")
+            self.after(0, self._log, "🔍 Nenhuma notificação nova encontrada.")
         self.after(0, self._atualizar_stats)
 
     def _exportar(self):
@@ -639,29 +699,29 @@ class App(tk.Tk):
         ultima = stats["ultima_coleta"]
         self.var_ult.set(ultima[11:16] if len(ultima) >= 16 else ultima)
 
-    def _atualizar_tabela(self, novas: list[dict]):
+    def _atualizar_tabela(self, novas: list):
         for m in novas:
             self.tree.insert("", 0, values=(
-                m.get("coletado_em", ""),
+                m.get("coletado_em",   ""),
                 m.get("data_infracao", ""),
-                m.get("placa", ""),
-                m.get("veiculo", ""),
-                m.get("descricao", ""),
-                m.get("local", ""),
-                m.get("valor", ""),
-                m.get("status", ""),
+                m.get("placa",         ""),
+                m.get("num_infracao",  ""),
+                m.get("descricao",     ""),
+                m.get("valor",         ""),
+                m.get("status",        ""),
+                m.get("corpo",         ""),
             ))
         total = len(self.tree.get_children())
         self.lbl_qtd.config(text=f"{total} registro(s)")
 
     def _atualizar_progresso(self, restam: int):
         self.progress["value"] = INTERVALO_SEG - restam
-        minutos = restam // 60
+        minutos  = restam // 60
         segundos = restam % 60
         self.lbl_contagem.config(text=f"{minutos:02d}:{segundos:02d}")
 
     def _log(self, msg: str):
-        ts = datetime.now().strftime("%H:%M:%S")
+        ts   = datetime.now().strftime("%H:%M:%S")
         linha = f"[{ts}] {msg}\n"
         self.txt_log.config(state="normal")
         self.txt_log.insert("end", linha)
