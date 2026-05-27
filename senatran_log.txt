@@ -380,3 +380,27 @@ Stacktrace:
 2026-05-19 10:43:35,151 [INFO] Tentando conectar na porta 9222...
 2026-05-19 10:43:35,153 [INFO] ====== WebDriver manager ======
 2026-05-19 10:43:35,916 [INFO] Driver [C:\Users\lucas.mendes\.wdm\drivers\chromedriver\win64\148.0.7778.167\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-27 16:35:47,620 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-27 16:37:22,775 [INFO] Sistema iniciado. Conecte ao navegador e inicie a coleta.
+2026-05-27 16:37:30,865 [INFO] Tentando conectar na porta 9222...
+2026-05-27 16:37:30,868 [INFO] ====== WebDriver manager ======
+2026-05-27 16:37:32,085 [INFO] Get LATEST chromedriver version for google-chrome
+2026-05-27 16:37:32,407 [INFO] There is no [win64] chromedriver "148.0.7778.178" for browser google-chrome "148.0.7778" in cache
+2026-05-27 16:37:32,993 [INFO] There is no [win64] chromedriver "148.0.7778.178" for browser google-chrome "148.0.7778" in cache
+2026-05-27 16:37:32,993 [INFO] Get LATEST chromedriver version for google-chrome
+2026-05-27 16:37:33,682 [INFO] WebDriver version 148.0.7778.178 selected
+2026-05-27 16:37:33,687 [INFO] Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.178/win64/chromedriver-win64.zip
+2026-05-27 16:37:33,687 [INFO] About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.178/win64/chromedriver-win64.zip
+2026-05-27 16:37:34,070 [INFO] Driver downloading response is 200
+2026-05-27 16:37:34,647 [INFO] Driver has been saved in cache [C:\Users\ygor.kouzak\.wdm\drivers\chromedriver\win64\148.0.7778.178]
+2026-05-27 16:37:35,721 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: 
+2026-05-27 16:37:35,727 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-27 16:37:39,814 [INFO] ⚡ Coleta manual iniciada...
+2026-05-27 16:37:49,985 [WARNING] ⚠️  Cards de autuação não encontrados na página atual.
+2026-05-27 16:37:49,997 [INFO] 🔍 Nenhuma notificação nova encontrada.
+2026-05-27 16:38:31,201 [INFO] Tentando conectar na porta 9222...
+2026-05-27 16:38:31,202 [INFO] ====== WebDriver manager ======
+2026-05-27 16:38:31,801 [INFO] Driver [C:\Users\ygor.kouzak\.wdm\drivers\chromedriver\win64\148.0.7778.178\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-05-27 16:38:32,351 [INFO] ✅ Conectado ao Chrome na porta 9222 | Página: gov.br - Acesse sua conta
+2026-05-27 16:38:32,352 [INFO] ✅ Conectado ao Chrome com sucesso!
+2026-05-27 16:40:57,229 [INFO] 🔌 Driver desconectado (Chrome continua aberto).

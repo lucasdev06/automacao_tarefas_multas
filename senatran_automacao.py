@@ -53,6 +53,12 @@ except ImportError:
     from webdriver_manager.chrome import ChromeDriverManager
     WEBDRIVER_MANAGER = True
 
+try:
+    import db_supabase
+    DB_ATIVO = True
+except Exception:
+    DB_ATIVO = False
+
 # ─────────────────────────────────────────────────────────────────────────────
 # CONFIGURAÇÕES
 # ─────────────────────────────────────────────────────────────────────────────
@@ -320,6 +326,8 @@ class GerenciadorDados:
     def adicionar(self, novas: list):
         self.multas.extend(novas)
         self.salvar()
+        if DB_ATIVO and novas:
+            db_supabase.inserir_multas(novas)
 
     def estatisticas_hoje(self) -> dict:
         hoje = date.today().strftime("%Y-%m-%d")
